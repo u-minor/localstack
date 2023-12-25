@@ -1,4 +1,4 @@
-# Generated from /Users/mep/LocalStack/localstack/localstack/services/stepfunctions/asl/antlr/ASLParser.g4 by ANTLR 4.13.1
+# Generated from ASLParser.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .ASLParser import ASLParser
@@ -431,6 +431,26 @@ class ASLParserVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ASLParser#catcher_stmt.
     def visitCatcher_stmt(self, ctx:ASLParser.Catcher_stmtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ASLParser#label_decl.
+    def visitLabel_decl(self, ctx:ASLParser.Label_declContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ASLParser#result_writer_decl.
+    def visitResult_writer_decl(self, ctx:ASLParser.Result_writer_declContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ASLParser#result_writer_field.
+    def visitResult_writer_field(self, ctx:ASLParser.Result_writer_fieldContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ASLParser#tolerated_failure_count_decl.
+    def visitTolerated_failure_count_decl(self, ctx:ASLParser.Tolerated_failure_count_declContext):
         return self.visitChildren(ctx)
 
 

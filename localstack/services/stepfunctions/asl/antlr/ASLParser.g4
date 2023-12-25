@@ -58,6 +58,9 @@ state_stmt
     | retry_decl
     | catch_decl
     | result_selector_decl
+    | result_writer_decl
+    | tolerated_failure_count_decl
+    | label_decl
     ;
 
 states_decl
@@ -456,6 +459,27 @@ catcher_stmt
     | next_decl
     ;
 
+label_decl
+    : LABEL COLON keyword_or_string
+    ;
+
+result_writer_decl
+    : RESULTWRITER
+      COLON
+      LBRACE
+      result_writer_field (COMMA result_writer_field)*
+      RBRACE
+    ;
+
+result_writer_field
+    : resource_decl
+    | parameters_decl
+    ;
+
+tolerated_failure_count_decl
+    : TOLERATEDFAILURECOUNT COLON INT
+    ;
+
 comparison_op
     : BOOLEANEQUALS
     | BOOLEANQUALSPATH
@@ -660,6 +684,9 @@ keyword_or_string // TODO: check keywords can be used as strings.
     | MAXATTEMPTS
     | BACKOFFRATE
     | CATCH
+    | LABEL
+    | RESULTWRITER
+    | TOLERATEDFAILURECOUNT
     | ERRORNAMEStatesALL
     | ERRORNAMEStatesHeartbeatTimeout
     | ERRORNAMEStatesTimeout

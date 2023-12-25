@@ -117,6 +117,10 @@ CSVHEADERS: '"CSVHeaders"';
 MAXITEMS: '"MaxItems"';
 MAXITEMSPATH: '"MaxItemsPath"';
 
+LABEL: '"Label"';
+RESULTWRITER: '"ResultWriter"';
+TOLERATEDFAILURECOUNT: '"ToleratedFailureCount"';
+
 NEXT: '"Next"';
 END: '"End"';
 

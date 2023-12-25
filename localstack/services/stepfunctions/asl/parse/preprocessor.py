@@ -164,11 +164,17 @@ from localstack.services.stepfunctions.asl.component.state.state_execution.state
 from localstack.services.stepfunctions.asl.component.state.state_execution.state_map.iteration.iterator.iterator_decl import (
     IteratorDecl,
 )
+from localstack.services.stepfunctions.asl.component.state.state_execution.state_map.label import (
+    Label,
+)
 from localstack.services.stepfunctions.asl.component.state.state_execution.state_map.max_concurrency import (
     MaxConcurrency,
 )
 from localstack.services.stepfunctions.asl.component.state.state_execution.state_map.mode import (
     Mode,
+)
+from localstack.services.stepfunctions.asl.component.state.state_execution.state_map.result_writer.result_writer_decl import (
+    ResultWriter,
 )
 from localstack.services.stepfunctions.asl.component.state.state_execution.state_map.state_map import (
     StateMap,
@@ -813,3 +819,20 @@ class Preprocessor(ASLParserVisitor):
             comment=props.get(typ=Comment),
         )
         return program
+
+    def visitLabel_decl(self, ctx: ASLParser.Label_declContext) -> Label:
+        return Label(label=self._inner_string_of(parse_tree=ctx.keyword_or_string()))
+
+    def visitResult_writer_decl(self, ctx: ASLParser.Result_writer_declContext) -> ResultWriter:
+        props = StateProps()
+        for child in ctx.children[3:-1]:
+            cmp = self.visit(child)
+            props.add(cmp)
+        resource: Resource = props.get(
+            typ=Resource,
+            raise_on_missing=ValueError(f"Expected a Resource declaration at '{ctx.getText()}'."),
+        )
+        return ResultWriter(
+            resource=resource,
+            parameters=props.get(Parameters),
+        )

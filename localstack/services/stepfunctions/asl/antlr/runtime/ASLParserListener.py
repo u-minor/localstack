@@ -1,4 +1,4 @@
-# Generated from /Users/mep/LocalStack/localstack/localstack/services/stepfunctions/asl/antlr/ASLParser.g4 by ANTLR 4.13.1
+# Generated from ASLParser.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .ASLParser import ASLParser
@@ -770,6 +770,42 @@ class ASLParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by ASLParser#catcher_stmt.
     def exitCatcher_stmt(self, ctx:ASLParser.Catcher_stmtContext):
+        pass
+
+
+    # Enter a parse tree produced by ASLParser#label_decl.
+    def enterLabel_decl(self, ctx:ASLParser.Label_declContext):
+        pass
+
+    # Exit a parse tree produced by ASLParser#label_decl.
+    def exitLabel_decl(self, ctx:ASLParser.Label_declContext):
+        pass
+
+
+    # Enter a parse tree produced by ASLParser#result_writer_decl.
+    def enterResult_writer_decl(self, ctx:ASLParser.Result_writer_declContext):
+        pass
+
+    # Exit a parse tree produced by ASLParser#result_writer_decl.
+    def exitResult_writer_decl(self, ctx:ASLParser.Result_writer_declContext):
+        pass
+
+
+    # Enter a parse tree produced by ASLParser#result_writer_field.
+    def enterResult_writer_field(self, ctx:ASLParser.Result_writer_fieldContext):
+        pass
+
+    # Exit a parse tree produced by ASLParser#result_writer_field.
+    def exitResult_writer_field(self, ctx:ASLParser.Result_writer_fieldContext):
+        pass
+
+
+    # Enter a parse tree produced by ASLParser#tolerated_failure_count_decl.
+    def enterTolerated_failure_count_decl(self, ctx:ASLParser.Tolerated_failure_count_declContext):
+        pass
+
+    # Exit a parse tree produced by ASLParser#tolerated_failure_count_decl.
+    def exitTolerated_failure_count_decl(self, ctx:ASLParser.Tolerated_failure_count_declContext):
         pass
 
 
