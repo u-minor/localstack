@@ -123,6 +123,7 @@ TOLERATEDFAILURECOUNTPATH: '"ToleratedFailureCountPath"';
 TOLERATEDFAILUREPERCENTAGE: '"ToleratedFailurePercentage"';
 TOLERATEDFAILUREPERCENTAGEPATH: '"ToleratedFailurePercentagePath"';
 LABEL: '"Label"';
+RESULTWRITER: '"ResultWriter"';
 
 NEXT: '"Next"';
 END: '"End"';
