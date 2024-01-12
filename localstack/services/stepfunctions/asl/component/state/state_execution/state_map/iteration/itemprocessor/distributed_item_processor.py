@@ -36,6 +36,7 @@ class DistributedItemProcessorEvalInput(DistributedIterationComponentEvalInput):
         item_selector: Optional[ItemSelector],
         tolerated_failure_count: int,
         tolerated_failure_percentage: float,
+        label: str,
     ):
         super().__init__(
             state_name=state_name,
@@ -43,6 +44,7 @@ class DistributedItemProcessorEvalInput(DistributedIterationComponentEvalInput):
             item_reader=item_reader,
             tolerated_failure_count=tolerated_failure_count,
             tolerated_failure_percentage=tolerated_failure_percentage,
+            label=label,
         )
         self.item_selector = item_selector
 

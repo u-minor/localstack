@@ -45,6 +45,9 @@ from localstack.services.stepfunctions.asl.component.state.state_execution.state
 from localstack.services.stepfunctions.asl.component.state.state_execution.state_map.iteration.iterator.iterator_decl import (
     IteratorDecl,
 )
+from localstack.services.stepfunctions.asl.component.state.state_execution.state_map.label import (
+    Label,
+)
 from localstack.services.stepfunctions.asl.component.state.state_execution.state_map.max_concurrency import (
     MaxConcurrency,
 )
@@ -72,6 +75,7 @@ class StateMap(ExecutionState):
     catch: Optional[CatchDecl]
     tolerated_failure_count: Optional[ToleratedFailureCount]
     tolerated_failure_percentage: Optional[ToleratedFailurePercentage]
+    label: Label
 
     def __init__(self):
         super(StateMap, self).__init__(
@@ -92,6 +96,7 @@ class StateMap(ExecutionState):
         self.result_selector = state_props.get(ResultSelector)
         self.retry = state_props.get(RetryDecl)
         self.catch = state_props.get(CatchDecl)
+        self.label = state_props.get(Label) or Label()
 
         # TODO: add check for itemreader used in distributed mode only.
 
@@ -183,6 +188,7 @@ class StateMap(ExecutionState):
                 item_selector=self.item_selector,
                 tolerated_failure_count=tolerated_failure_count,
                 tolerated_failure_percentage=tolerated_failure_percentage,
+                label=self.label.label,
             )
         else:
             raise RuntimeError(

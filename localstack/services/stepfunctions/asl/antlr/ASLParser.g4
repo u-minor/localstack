@@ -67,6 +67,7 @@ state_stmt
     | tolerated_failure_count_path_decl
     | tolerated_failure_percentage_decl
     | tolerated_failure_percentage_path_decl
+    | label_decl
     ;
 
 states_decl
@@ -420,6 +421,10 @@ tolerated_failure_percentage_path_decl
     : TOLERATEDFAILUREPERCENTAGEPATH COLON STRINGPATH
     ;
 
+label_decl
+    : LABEL COLON keyword_or_string
+    ;
+
 retry_decl
     : RETRY
       COLON
@@ -679,6 +684,7 @@ keyword_or_string // TODO: check keywords can be used as strings.
     | TOLERATEDFAILURECOUNTPATH
     | TOLERATEDFAILUREPERCENTAGE
     | TOLERATEDFAILUREPERCENTAGEPATH
+    | LABEL
     | NEXT
     | END
     | CAUSE

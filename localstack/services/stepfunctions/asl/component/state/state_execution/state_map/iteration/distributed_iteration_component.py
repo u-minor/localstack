@@ -48,6 +48,7 @@ class DistributedIterationComponentEvalInput:
     item_reader: Final[ItemReader]
     tolerated_failure_count: Final[int]
     tolerated_failure_percentage: Final[float]
+    label: Final[str]
 
     def __init__(
         self,
@@ -56,12 +57,14 @@ class DistributedIterationComponentEvalInput:
         item_reader: ItemReader,
         tolerated_failure_count: int,
         tolerated_failure_percentage: float,
+        label: str,
     ):
         self.state_name = state_name
         self.max_concurrency = max_concurrency
         self.item_reader = item_reader
         self.tolerated_failure_count = tolerated_failure_count
         self.tolerated_failure_percentage = tolerated_failure_percentage
+        self.label = label
 
 
 class DistributedIterationComponent(InlineIterationComponent, abc.ABC):
@@ -136,6 +139,7 @@ class DistributedIterationComponent(InlineIterationComponent, abc.ABC):
             max_concurrency=self._eval_input.max_concurrency,
             tolerated_failure_count=self._eval_input.tolerated_failure_count,
             tolerated_failure_percentage=self._eval_input.tolerated_failure_percentage,
+            label=self._eval_input.label,
         )
         env.map_run_record_pool_manager.add(self._map_run_record)
 
