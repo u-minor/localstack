@@ -234,6 +234,7 @@ class EventsRuleProvider(ResourceProvider[EventsRuleProperties]):
                         "cidr",
                         "exists",
                         "suffix",
+                        "wildcard",
                     ]:
                         o[k] = [v]
             return o
